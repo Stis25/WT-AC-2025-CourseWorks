@@ -4,20 +4,20 @@
 
 ## Быстрый старт (локально, minikube/kind)
 
-1) Собрать образы локально:
+### 1. Собрать образы локально
 
 ```bash
 docker build -t todo-backend:latest ./backend
 docker build -t todo-frontend:latest ./frontend
 ```
 
-2) Применить манифесты:
+### 2 Применить манифесты
 
 ```bash
 kubectl apply -f k8s
 ```
 
-3) Добавить хосты (если используешь Ingress + host):
+### 3 Добавить хосты (если используешь Ingress + host)
 
 ```
 127.0.0.1 todo.local

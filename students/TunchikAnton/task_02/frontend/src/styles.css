@@ -1,23 +1,21 @@
 :root {
-  font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
   line-height: 1.4;
-
   --bg-1: #f6f7ff;
   --bg-2: #f8fafc;
-  --card: rgba(255, 255, 255, 0.9);
-  --border: rgba(15, 23, 42, 0.12);
+  --card: rgb(255 255 255 / 90%);
+  --border: rgb(15 23 42 / 12%);
   --text: #0f172a;
-  --muted: rgba(15, 23, 42, 0.62);
-  --shadow: 0 10px 30px rgba(15, 23, 42, 0.08);
-  --shadow-hover: 0 16px 44px rgba(15, 23, 42, 0.12);
-
+  --muted: rgb(15 23 42 / 62%);
+  --shadow: 0 10px 30px rgb(15 23 42 / 8%);
+  --shadow-hover: 0 16px 44px rgb(15 23 42 / 12%);
   --primary: #2563eb;
   --primary-2: #7c3aed;
   --danger: #ef4444;
 }
 
-/* background */
-html, body {
+html,
+body {
   height: 100%;
 }
 
@@ -25,8 +23,8 @@ body {
   margin: 0;
   color: var(--text);
   background:
-    radial-gradient(900px 500px at 15% 10%, rgba(37, 99, 235, 0.18), transparent 60%),
-    radial-gradient(900px 500px at 85% 0%, rgba(124, 58, 237, 0.16), transparent 60%),
+    radial-gradient(900px 500px at 15% 10%, rgb(37 99 235 / 18%), transparent 60%),
+    radial-gradient(900px 500px at 85% 0%, rgb(124 58 237 / 16%), transparent 60%),
     linear-gradient(180deg, var(--bg-1), var(--bg-2));
 }
 
@@ -34,7 +32,6 @@ a {
   color: var(--primary);
 }
 
-/* layout */
 .container {
   max-width: 1100px;
   margin: 0 auto;
@@ -46,7 +43,7 @@ a {
   gap: 12px;
   align-items: center;
   justify-content: space-between;
-  padding: 12px 12px;
+  padding: 12px;
   border: 1px solid var(--border);
   border-radius: 18px;
   background: var(--card);
@@ -89,13 +86,13 @@ a {
 }
 
 .nav-item:hover {
-  background: rgba(15, 23, 42, 0.04);
-  border-color: rgba(15, 23, 42, 0.08);
+  background: rgb(15 23 42 / 4%);
+  border-color: rgb(15 23 42 / 8%);
 }
 
 .nav-item.active {
-  background: rgba(37, 99, 235, 0.12);
-  border-color: rgba(37, 99, 235, 0.22);
+  background: rgb(37 99 235 / 12%);
+  border-color: rgb(37 99 235 / 22%);
 }
 
 .user-box {
@@ -122,43 +119,49 @@ a {
   margin-top: 16px;
 }
 
-/* controls */
-input, textarea, select, button {
+input,
+textarea,
+select,
+button {
   font: inherit;
 }
 
-input, textarea, select {
+input,
+textarea,
+select {
   width: 100%;
   box-sizing: border-box;
   padding: 10px 12px;
   border: 1px solid var(--border);
   border-radius: 14px;
-  background: rgba(255, 255, 255, 0.9);
+  background: rgb(255 255 255 / 90%);
   outline: none;
   transition: box-shadow 160ms ease, border-color 160ms ease, transform 160ms ease;
-}
-
-input:focus, textarea:focus, select:focus {
-  border-color: rgba(37, 99, 235, 0.35);
-  box-shadow: 0 0 0 4px rgba(37, 99, 235, 0.12);
 }
 
 textarea {
   resize: vertical;
 }
 
+input:focus,
+textarea:focus,
+select:focus {
+  border-color: rgb(37 99 235 / 35%);
+  box-shadow: 0 0 0 4px rgb(37 99 235 / 12%);
+}
+
 .btn {
   padding: 10px 12px;
   border-radius: 14px;
   border: 1px solid var(--border);
-  background: rgba(255, 255, 255, 0.9);
+  background: rgb(255 255 255 / 90%);
   cursor: pointer;
   transition: transform 120ms ease, box-shadow 120ms ease, border-color 120ms ease, background 120ms ease;
 }
 
 .btn:hover {
-  border-color: rgba(15, 23, 42, 0.18);
-  box-shadow: 0 8px 18px rgba(15, 23, 42, 0.08);
+  border-color: rgb(15 23 42 / 18%);
+  box-shadow: 0 8px 18px rgb(15 23 42 / 8%);
   transform: translateY(-1px);
 }
 
@@ -174,13 +177,13 @@ textarea {
 
 .btn-primary {
   color: white;
-  border-color: rgba(37, 99, 235, 0.35);
+  border-color: rgb(37 99 235 / 35%);
   background: linear-gradient(135deg, var(--primary), var(--primary-2));
 }
 
 .btn-danger {
   color: white;
-  border-color: rgba(239, 68, 68, 0.35);
+  border-color: rgb(239 68 68 / 35%);
   background: linear-gradient(135deg, var(--danger), #f97316);
 }
 
@@ -211,8 +214,8 @@ textarea {
   font-size: 12px;
   padding: 2px 8px;
   border-radius: 999px;
-  background: rgba(15, 23, 42, 0.06);
-  border: 1px solid rgba(15, 23, 42, 0.08);
+  background: rgb(15 23 42 / 6%);
+  border: 1px solid rgb(15 23 42 / 8%);
 }
 
 .grid {
@@ -229,7 +232,7 @@ textarea {
 
 .divider {
   height: 1px;
-  background: rgba(15, 23, 42, 0.10);
+  background: rgb(15 23 42 / 10%);
   border: none;
   margin: 16px 0;
 }
