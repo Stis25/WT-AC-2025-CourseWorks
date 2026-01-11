@@ -8,15 +8,13 @@ from fastapi.testclient import TestClient
 
 @pytest.fixture(scope="session")
 def client():
-    # Use isolated SQLite for tests
     with tempfile.TemporaryDirectory() as tmp:
         db_path = os.path.join(tmp, "test.db")
         os.environ["DB_PATH"] = db_path
         os.environ["SECRET_KEY"] = "test-secret"
         os.environ["UPLOAD_DIR"] = os.path.join(tmp, "uploads")
 
-        # Import app after env vars are set
-        from main import app  # noqa
+        from main import app 
 
         with TestClient(app) as c:
             yield c
@@ -51,14 +49,12 @@ def test_user_flow_repeating_task(client: TestClient):
     reg = register(client, "u1@example.com", "password123", role="user")
     token = reg["token"]
 
-    # create tag
     r = client.post("/tags", json={"name": "work"}, headers=auth_headers(token))
     assert r.status_code == 200
     tag_id = r.json()["id"]
 
     due = datetime.now(timezone.utc).replace(microsecond=0) + timedelta(hours=1)
 
-    # create repeating task
     r = client.post(
         "/tasks",
         json={
@@ -75,18 +71,15 @@ def test_user_flow_repeating_task(client: TestClient):
     task = r.json()
     task_id = task["id"]
 
-    # generate next occurrence
     r = client.post(f"/tasks/{task_id}/generate-next", headers=auth_headers(token))
     assert r.status_code == 200, r.text
     next_task = r.json()
     assert next_task["repeat_interval_minutes"] == 60
 
-    # due_at increments
     due_next = datetime.fromisoformat(next_task["due_at"])
     due_orig = datetime.fromisoformat(task["due_at"])
     assert int((due_next - due_orig).total_seconds()) == 3600
 
-    # calendar view includes both tasks (depending on range)
     date_from = (due_orig - timedelta(days=1)).isoformat()
     date_to = (due_next + timedelta(days=1)).isoformat()
     r = client.get(

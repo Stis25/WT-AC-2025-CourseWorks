@@ -6,7 +6,6 @@ DB_PATH = os.getenv("DB_PATH", "app.db")
 def get_db() -> sqlite3.Connection:
     conn = sqlite3.connect(DB_PATH)
     conn.row_factory = sqlite3.Row
-    # SQLite требует включить FK
     conn.execute("PRAGMA foreign_keys = ON;")
     return conn
 
@@ -16,16 +15,6 @@ def init_db(seed: bool = True):
         conn.execute("PRAGMA foreign_keys = ON;")
         cur = conn.cursor()
 
-        # --- "миграции" MVP-уровня: schema_version ---
-        cur.execute("""
-            CREATE TABLE IF NOT EXISTS SchemaVersion (
-                id INTEGER PRIMARY KEY CHECK (id = 1),
-                version INTEGER NOT NULL
-            )
-        """)
-        cur.execute("INSERT OR IGNORE INTO SchemaVersion (id, version) VALUES (1, 1)")
-
-        # --- tables ---
         cur.execute("""
             CREATE TABLE IF NOT EXISTS User (
                 id INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -119,7 +108,6 @@ def init_db(seed: bool = True):
             )
         """)
 
-        # --- indexes (ключевые запросы) ---
         cur.execute("CREATE INDEX IF NOT EXISTS idx_task_user_due ON Task(user_id, due_at)")
         cur.execute("CREATE INDEX IF NOT EXISTS idx_task_status ON Task(status)")
         cur.execute("CREATE INDEX IF NOT EXISTS idx_subtask_task ON SubTask(task_id)")
@@ -128,7 +116,6 @@ def init_db(seed: bool = True):
         cur.execute("CREATE INDEX IF NOT EXISTS idx_reminder_task ON Reminder(task_id)")
         cur.execute("CREATE INDEX IF NOT EXISTS idx_reminder_next_run ON Reminder(next_run_at, is_enabled)")
 
-        # --- triggers for updated_at ---
         cur.execute("""
             CREATE TRIGGER IF NOT EXISTS trg_task_updated_at
             AFTER UPDATE ON Task
