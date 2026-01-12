@@ -1,0 +1,21 @@
+{
+  "name": "wt-ac-2025-coursework-guys",
+  "private": true,
+  "workspaces": [
+    "apps/*"
+  ],
+  "scripts": {
+    "dev": "concurrently \"npm run dev:backend\" \"npm run dev:frontend\"",
+    "dev:backend": "npm run dev -w backend",
+    "build:backend": "npm run build -w backend",
+    "start:backend": "npm run start -w backend",
+    "dev:frontend": "npm run dev -w frontend",
+    "build:frontend": "npm run build -w frontend",
+    "preview:frontend": "npm run preview -w frontend",
+    "lint:backend": "npm run lint -w backend || exit 0",
+    "lint:frontend": "npm run lint -w frontend || exit 0"
+  },
+  "devDependencies": {
+    "concurrently": "^8.2.2"
+  }
+}
