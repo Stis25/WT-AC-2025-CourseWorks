@@ -192,7 +192,6 @@ select:focus {
   background: transparent;
 }
 
-/* cards */
 .card {
   padding: 14px;
   border: 1px solid var(--border);

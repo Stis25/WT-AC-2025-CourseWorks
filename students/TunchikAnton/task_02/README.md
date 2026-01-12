@@ -1,4 +1,4 @@
-# «Список дел» — задачи + календарь 📆 (MVP)
+# «Список дел» — задачи + календарь (MVP)
 
 Проект состоит из двух частей:
 
@@ -15,34 +15,31 @@
 docker compose up --build
 ```
 
-Frontend: http://localhost:5173
+Frontend: [http://localhost:5173]
 
-Backend (Swagger): http://localhost:8000/docs
+Backend (Swagger): [http://localhost:8000/docs]
 
 ### 1) Backend
 
 ```bash
 cd backend
 python -m venv .venv
-# Windows: .venv\\Scripts\\activate
 source .venv/bin/activate
 pip install -r requirements.txt
-# .env не обязателен (по умолчанию всё работает и без него)
 uvicorn main:app --reload --port 8000
 ```
 
-Swagger: http://localhost:8000/docs
+Swagger: [http://localhost:8000/docs]
 
 ### 2) Frontend
 
 ```bash
 cd frontend
 npm install
-# .env не обязателен (по умолчанию API = http://localhost:8000)
 npm run dev
 ```
 
-Открой: http://localhost:5173
+Открой: [http://localhost:5173]
 
 ## Роли
 
