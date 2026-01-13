@@ -1,0 +1,25 @@
+services:
+  backend:
+    build:
+      context: ./backend
+    ports:
+      - "8000:8000"
+    environment:
+      DB_PATH: /data/app.db
+      UPLOAD_DIR: /data/uploads
+      CORS_ORIGINS: "http://localhost:5173,http://127.0.0.1:5173"
+      # for demo only; override in production
+      SECRET_KEY: "change_me_to_random_secret_in_production"
+    volumes:
+      - backend_data:/data
+
+  frontend:
+    build:
+      context: ./frontend
+    ports:
+      - "5173:80"
+    depends_on:
+      - backend
+
+volumes:
+  backend_data:

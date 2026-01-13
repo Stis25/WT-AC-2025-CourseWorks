@@ -1,0 +1,239 @@
+:root {
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
+  line-height: 1.4;
+  
+  --bg-1: #f6f7ff;
+  --bg-2: #f8fafc;
+  --card: rgb(255 255 255 / 90%);
+  --border: rgb(15 23 42 / 12%);
+  --text: #0f172a;
+  --muted: rgb(15 23 42 / 62%);
+  --shadow: 0 10px 30px rgb(15 23 42 / 8%);
+  --shadow-hover: 0 16px 44px rgb(15 23 42 / 12%);
+  --primary: #2563eb;
+  --primary-2: #7c3aed;
+  --danger: #ef4444;
+}
+
+html,
+body {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  color: var(--text);
+  background:
+    radial-gradient(900px 500px at 15% 10%, rgb(37 99 235 / 18%), transparent 60%),
+    radial-gradient(900px 500px at 85% 0%, rgb(124 58 237 / 16%), transparent 60%),
+    linear-gradient(180deg, var(--bg-1), var(--bg-2));
+}
+
+a {
+  color: var(--primary);
+}
+
+.container {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 16px;
+}
+
+.app-header {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px;
+  border: 1px solid var(--border);
+  border-radius: 18px;
+  background: var(--card);
+  backdrop-filter: blur(8px);
+  box-shadow: var(--shadow);
+}
+
+.brand {
+  text-decoration: none;
+  color: var(--text);
+  display: grid;
+  gap: 2px;
+}
+
+.brand-title {
+  font-weight: 900;
+  letter-spacing: -0.02em;
+  font-size: 18px;
+}
+
+.brand-subtitle {
+  font-size: 12px;
+  color: var(--muted);
+}
+
+.nav {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.nav-item {
+  padding: 7px 10px;
+  border-radius: 12px;
+  text-decoration: none;
+  color: var(--text);
+  border: 1px solid transparent;
+  transition: transform 140ms ease, background 140ms ease, border-color 140ms ease;
+}
+
+.nav-item:hover {
+  background: rgb(15 23 42 / 4%);
+  border-color: rgb(15 23 42 / 8%);
+}
+
+.nav-item.active {
+  background: rgb(37 99 235 / 12%);
+  border-color: rgb(37 99 235 / 22%);
+}
+
+.user-box {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+.user-meta {
+  text-align: right;
+}
+
+.user-name {
+  font-size: 12px;
+  font-weight: 800;
+}
+
+.user-secondary {
+  font-size: 12px;
+  color: var(--muted);
+}
+
+.main {
+  margin-top: 16px;
+}
+
+input,
+textarea,
+select,
+button {
+  font: inherit;
+}
+
+input,
+textarea,
+select {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 10px 12px;
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  background: rgb(255 255 255 / 90%);
+  outline: none;
+  transition: box-shadow 160ms ease, border-color 160ms ease, transform 160ms ease;
+}
+
+textarea {
+  resize: vertical;
+}
+
+input:focus,
+textarea:focus,
+select:focus {
+  border-color: rgb(37 99 235 / 35%);
+  box-shadow: 0 0 0 4px rgb(37 99 235 / 12%);
+}
+
+.btn {
+  padding: 10px 12px;
+  border-radius: 14px;
+  border: 1px solid var(--border);
+  background: rgb(255 255 255 / 90%);
+  cursor: pointer;
+  transition: transform 120ms ease, box-shadow 120ms ease, border-color 120ms ease, background 120ms ease;
+}
+
+.btn:hover {
+  border-color: rgb(15 23 42 / 18%);
+  box-shadow: 0 8px 18px rgb(15 23 42 / 8%);
+  transform: translateY(-1px);
+}
+
+.btn:active {
+  transform: translateY(0);
+  box-shadow: none;
+}
+
+.btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.btn-primary {
+  color: white;
+  border-color: rgb(37 99 235 / 35%);
+  background: linear-gradient(135deg, var(--primary), var(--primary-2));
+}
+
+.btn-danger {
+  color: white;
+  border-color: rgb(239 68 68 / 35%);
+  background: linear-gradient(135deg, var(--danger), #f97316);
+}
+
+.btn-ghost {
+  background: transparent;
+}
+
+/* cards */
+.card {
+  padding: 14px;
+  border: 1px solid var(--border);
+  border-radius: 18px;
+  background: var(--card);
+  box-shadow: var(--shadow);
+  transition: transform 140ms ease, box-shadow 140ms ease;
+}
+
+.card:hover {
+  transform: translateY(-1px);
+  box-shadow: var(--shadow-hover);
+}
+
+.muted {
+  color: var(--muted);
+}
+
+.chip {
+  font-size: 12px;
+  padding: 2px 8px;
+  border-radius: 999px;
+  background: rgb(15 23 42 / 6%);
+  border: 1px solid rgb(15 23 42 / 8%);
+}
+
+.grid {
+  display: grid;
+  gap: 10px;
+}
+
+.row {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+.divider {
+  height: 1px;
+  background: rgb(15 23 42 / 10%);
+  border: none;
+  margin: 16px 0;
+}
